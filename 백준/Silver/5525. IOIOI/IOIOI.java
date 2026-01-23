@@ -11,25 +11,25 @@ public class Main {
         int m = Integer.parseInt(br.readLine());
         String s = br.readLine();
 
-        StringBuilder find = new StringBuilder("I");
-        for (int i = 0; i < n; i++) {
-            find.append("OI");
-        }
-
+        int ans = 0;
         int count = 0;
 
-        while (true) {
-            int x = s.indexOf(String.valueOf(find));
+        for (int i = 1; i < m - 1; i++) {
 
-            if (x != -1) {
+            if (s.charAt(i - 1) == 'I' && s.charAt(i) == 'O' && s.charAt(i + 1) == 'I') {
                 count++;
-                s = s.substring(x + 2);
+
+                if (count >= n) {
+                    ans++;
+                }
+
+                i++;
             } else {
-                break;
+                count = 0;
             }
         }
 
-        bw.write(String.valueOf(count));
+        bw.write(String.valueOf(ans));
 
         bw.flush();
         bw.close();
