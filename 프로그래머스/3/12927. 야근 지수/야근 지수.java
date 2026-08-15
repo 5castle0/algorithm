@@ -1,0 +1,30 @@
+import java.util.*;
+
+class Solution {
+    
+    public long solution(int n, int[] works) {
+        
+        long answer = 0;
+        
+        PriorityQueue<Integer> pq = new PriorityQueue(Collections.reverseOrder());
+        
+        for(int i : works){
+            pq.add(i);
+        }
+        
+        for(int i=0; i<n; i++){
+            int work = pq.remove();
+            if(work==0){
+                break;
+            }
+            pq.add(work-1);
+        }
+        
+        while(!pq.isEmpty()){
+            int work = pq.remove();
+            answer += work*work;
+        }
+        
+        return answer;
+    }
+}
