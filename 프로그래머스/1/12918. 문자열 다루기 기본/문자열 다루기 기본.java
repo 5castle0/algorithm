@@ -1,0 +1,16 @@
+class Solution {
+    public boolean solution(String s) {
+        int len = s.length();
+        if(len != 4 && len != 6){
+            return false;
+        }
+        
+        for(int i=0; i<s.length(); i++){
+            int c  = (int) s.charAt(i);
+            
+            if(48 > c || c > 57) return false; 
+        }
+
+        return true;
+    }
+}
